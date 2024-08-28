@@ -10,7 +10,7 @@ import {
   reverseArrayInplace,
   findAverage,
   findAverageUsingReduce,
-} from "./Arrays/Traversing";
+} from "./Arrays/Traversing.js";
 
 // imports from Searching.js
 import {
@@ -20,4 +20,19 @@ import {
   findLastIndexUsingBinarySearch,
   firstAndLatIndexOfElement,
   findRotationCount,
-} from "./Arrays/Searching";
+} from "./Arrays/Searching.js";
+
+import {
+  insertAtPosition,
+  deleteFromPosition,
+  removeAllOccuranceOfanElement,
+  mergeTwoSortedArraysIntoOne,
+  rotateArrayRightBySteps,
+} from "./Arrays/Insertion.js";
+
+// __________________________ Test ___________________________
+
+// console.log(deleteFromPosition([1,2,3,4], -1, 5))
+// console.log(removeAllOccuranceOfanElement([1,2,3,4,5,2,2,1,2,1],2))
+// console.log(mergeTwoSortedArraysIntoOne([1,2,5,6,7,8,9],[2,2.5,3,3,4,5,6]))
+// console.log( rotateArrayRightBySteps([1,2,5,6,7,8,9], -1))
