@@ -94,45 +94,94 @@ export function firstAndLatIndexOfElement(arr, element, start, end) {
 //Q4. Find the number of times a sorted array is rotated.
 //method 1 : O(n) traversal
 
-export function findRotationCount(arr) {
-  if (arr.length === 0) return 0;
+// export function findRotationCount(arr) {
+//   if (arr.length === 0) return 0;
 
-  if (arr[0] < arr[arr.length - 1]) return 0;
-  let prev = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] < prev) {
-      return i;
-    }
-    prev = arr[i];
-  }
-  return 0;
-}
-
-// method:2 using binary search
-
-// -----------check implementation--------------------------------
-// export function noOfTimesRotation(arr) {
-//     if (arr.length < 2) return 0;
-//     let left = 0;
-//     let right = arr.length - 1;
-//     while (left < right) {
-//         let mid = left + Math.floor((right - left) / 2);
-//         if (arr[mid] > arr[right]) {
-//             left = mid + 1;
-//         } else {
-//             right = mid;
-//         }
+//   if (arr[0] < arr[arr.length - 1]) return 0;
+//   let prev = arr[0];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] < prev) {
+//       return i;
 //     }
-//     return left;
+//     prev = arr[i];
+//   }
+//   return 0;
 // }
 
-// ------------------------------------------ testing ----------------
-// call the function
+// method:2 using binary search
+export function findRotationCount(arr) {
+  if (arr.length === 0) return -1;
 
-// const arr = [2,3,3,4,1,1,1,2,2,2];
+  // single element is always sorted.
+  if (arr.length === 1) return 0;
 
-// console.log(arr)
+  let start = 0;
+  let end = arr.length - 1;
 
-// const answer = noOfTimesRotation(arr);
+  while (start < end) {
+    const mid = Math.floor((start + end) / 2);
+    if (arr[mid] > arr[end]) {
+      start = mid + 1;
+    } else {
+      end = mid;
+    }
+  }
 
-// console.log(answer)
+  return start;
+}
+
+//Q5. Search an element in a rotated sorted array.
+export function searchElementInRotatedSortedArray(arr, ele) {
+  const rotationCount = findRotationCount(arr);
+  if (ele === arr[rotationCount]) {
+    return rotationCount;
+  } else {
+    const first = giveFirstIndexOfElementSortedArray(
+      arr,
+      ele,
+      0,
+      rotationCount - 1
+    );
+    // const second =giveFirstIndexOfElementSortedArray(arr, ele, rotationCount+1,arr.length -1);
+    // improvement
+    const second =
+      rotationCount < arr.length - 1
+        ? giveFirstIndexOfElementSortedArray(
+            arr,
+            ele,
+            rotationCount + 1,
+            arr.length - 1
+          )
+        : -1;
+
+    if (first !== -1) return first;
+    else if (second !== -1) {
+      return second;
+    } else {
+      return -1;
+    }
+  }
+}
+
+export function giveFirstIndexOfElementSortedArray(arr, element, start, end) {
+  if (start < 0 || end > arr.length - 1) return -1;
+
+  let left = start;
+  let right = end;
+  let result = -1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] === element) {
+      result = mid;
+      right = mid - 1;
+    } else if (arr[mid] < element) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return result;
+}
