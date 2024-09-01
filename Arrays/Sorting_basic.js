@@ -2,7 +2,7 @@ const given = [2, 3, 1, -1, 0, 4, 3, 7, 5];
 
 //1. implement bubble sort.
 
-function bubbleSort(arr) {
+export function bubbleSort(arr) {
   const n = arr.length - 1;
   for (let outer = n; outer > 0; outer--)
     for (let i = 0; i < outer; i++) {
@@ -17,7 +17,7 @@ function bubbleSort(arr) {
 
 // console.log(bubbleSort(given))
 
-function swap(arr, i, j) {
+export function swap(arr, i, j) {
   if (!Array.isArray(arr)) return;
 
   if (i < 0 || j < 0 || i >= arr.length || j >= arr.length) return;
@@ -33,7 +33,7 @@ function swap(arr, i, j) {
 
 // 2. Implement selection sort
 
-function selectionSort(arr) {
+export function selectionSort(arr) {
   const n = arr.length - 1;
   for (let i = n; i >= 0; i--) {
     let maxIndex = i;
@@ -55,7 +55,7 @@ function selectionSort(arr) {
 
 // 3. Implement Insertion Sort.
 
-function insertionSort(arr) {
+export function insertionSort(arr) {
   const n = arr.length;
   //start with second element assume first one is already sorted and on it's right place
   for (let i = 1; i < n; i++) {
@@ -80,13 +80,13 @@ function insertionSort(arr) {
 
 //case insansitive sorting of the string[]
 // Output: [ 'apple', 'Banana', 'Cherry', 'date' ]
-function sortArryOfStrings(arr) {
+export function sortArrayOfStrings(arr) {
   return arr.sort((a, b) => a.localeCompare(b));
 }
 
 //case insansitive sorting of the string[]
 // Output: [ 'apple', 'Banana', 'Cherry', 'date' ]
-function sortArryOfStrings2(arr) {
+export function sortArrayOfStrings2(arr) {
   return arr.sort((a, b) => {
     if (a.toLowerCase() < b.toLowerCase()) return -1;
     else if (a.toLowerCase() > b.toLowerCase()) return 1;
@@ -96,7 +96,7 @@ function sortArryOfStrings2(arr) {
 
 //case sansitive sorting of the string[]
 // Output: ["Banana", "Cherry", "apple", "date"]
-function sortArryOfStrings3(arr) {
+export function sortArrayOfStrings3(arr) {
   return arr.sort((a, b) => {
     if (a < b) return -1;
     if (a > b) return 1;
@@ -111,7 +111,7 @@ const givenArray = [
 ];
 
 // this approach is using the extra memory[];
-function sortDutchNationalFlag(arr) {
+export function sortDutchNationalFlag(arr) {
   let count0 = 0;
   let count1 = 0;
   let count2 = 0;
@@ -159,7 +159,7 @@ function sortDutchNationalFlag(arr) {
   return newArray;
 }
 
-function sortDutchNationalFlagInPlace(arr) {
+export function sortDutchNationalFlagInPlace(arr) {
   const n = arr.length;
   let low = 0;
   let mid = 0;
