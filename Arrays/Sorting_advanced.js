@@ -1,6 +1,6 @@
 // Q1. Implement Merge Sort.
 
-function mergeSort(arr){
+export function mergeSort(arr){
 	const n =arr.length;
 	if(n <= 1){
 		return arr;
@@ -61,4 +61,37 @@ function sortedMerge(arr1,arr2){
 // console.log(mergeSort([0,-1,4,5,3,2,2,4]))
 // console.log([0,-1,4,5,3,2,2,4].sort((a,b)=>a-b))
 //console.log(sortedMerge([0,1,1,2,4,5,7,8],[3,3,4,5,7,8,9,10]))
+
+//implement quick sort
+
+// const data = [4,2,4,2,1,1,6,8,9,34,6,8,3,0,-1];
+
+export function quickSort(arr){
+	const n= arr.length;
+	
+	if(n<=1)return arr;
+	
+	//taking the last element as the pivot element.
+	const pivot= arr[n-1];
+
+	const left=[];
+	const right=[];
+
+	for (let i = 0; i < n - 1; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]); // Add to left if less than pivot
+        } else {
+            right.push(arr[i]); // Add to right if greater than pivot
+        }
+    	}
+	
+	
+	return [...quickSort(left), pivot, ...quickSort(right)];
+
+}
+
+
+
+// console.log(quickSort([4,2,4,2,1,1,6,8,9,34,6,8,3,0,-1]))
+
 

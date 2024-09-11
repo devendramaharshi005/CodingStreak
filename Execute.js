@@ -43,6 +43,9 @@ import {
   sortDutchNationalFlagInPlace,
 } from "./Arrays/Sorting_basic.js";
 
+
+import {mergeSort, quickSort} from './Arrays/Sorting_advanced.js';
+
 // __________________________ Test ___________________________
 
 // console.log(findRotationCount( [2,3,4,1,1,1,2,2,2]));
